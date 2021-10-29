@@ -49,7 +49,9 @@ class AddWheel : AppCompatActivity() {
             }
 
             btnSave.onClick {
-                if (etWheelName.text.toString().isEmpty()) {
+                if ( dbHelper.wheelIsExist(etWheelName.text.toString()) ) {
+                    toast("Nama wheel sudah terdaftar")
+                } else if (etWheelName.text.toString().isEmpty()) {
                     toast("Silahkan isi semua kolom")
                 } else if ( adapter.getList().isEmpty() ) {
                     toast("Item tidak boleh kosong")

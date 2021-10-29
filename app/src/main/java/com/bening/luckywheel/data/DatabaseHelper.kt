@@ -23,6 +23,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DatabaseHelpe
         onCreate(db)
     }
 
+    fun wheelIsExist(name: String): Boolean {
+        val db = this.writableDatabase
+        val res = db.rawQuery("SELECT * FROM Wheel WHERE NAME='" + name + "'", null)
+
+        return res.count != 0
+    }
+
     fun updateWheel(WheelID: Int, name: String) {
         val db = this.writableDatabase
         val contentValues = ContentValues()

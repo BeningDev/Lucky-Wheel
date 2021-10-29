@@ -58,10 +58,12 @@ class EditWheel : AppCompatActivity() {
             }
 
             btnSave.onClick {
-                if ( adapter.getList().isEmpty() ) {
-                    toast("Items tidak boleh kosong")
-                } else if ( etWheelName.text.toString().isEmpty() ) {
+                if ( etWheelName.text.toString().isEmpty() ) {
                     toast("Wheel Name tidak boleh kosong")
+                } else if ( dbHelper.wheelIsExist(etWheelName.text.toString()) && etWheelName.text.toString() != dataWheel.nama ) {
+                    toast("Nama wheel sudah terdaftar")
+                } else if ( adapter.getList().isEmpty() ) {
+                    toast("Items tidak boleh kosong")
                 } else {
                     dbHelper.delAllItem(dataWheel.id)
                     dbHelper.updateWheel(dataWheel.id, etWheelName.text.toString())
