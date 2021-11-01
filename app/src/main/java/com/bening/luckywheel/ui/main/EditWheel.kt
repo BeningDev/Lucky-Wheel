@@ -1,8 +1,14 @@
 package com.bening.luckywheel.ui.main
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bening.luckywheel.R
 import com.bening.luckywheel.data.*
@@ -78,6 +84,25 @@ class EditWheel : AppCompatActivity() {
             btnBack.onClick {
                 finish()
             }
+        }
+    }
+
+    private fun showDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val btnYes = dialog.findViewById<Button>(R.id.btnYes)
+        val btnNo = dialog.findViewById<Button>(R.id.btnNo)
+
+        btnNo.onClick {
+            dialog.dismiss()
+        }
+
+        btnYes.onClick {
+            finish()
         }
     }
 }

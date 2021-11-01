@@ -14,4 +14,6 @@
     <color name="black_200">#2C3030</color>
     <color name="black_300">#474A4A</color>
     <color name="black_100">#000000</color>
+    <color name="light_gray">#F8F7FA</color>
+    <color name="colorPrimaryLight">#27B784</color>
 </resources>

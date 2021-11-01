@@ -1,21 +1,21 @@
 package com.bening.luckywheel.ui.main
 
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import com.bening.luckywheel.R
 import com.bening.luckywheel.data.DataWheel
 import com.bening.luckywheel.data.DatabaseHelper
 import com.bening.luckywheel.databinding.ActivitySpinWheelBinding
 import com.bluehomestudio.luckywheel.WheelItem
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
 import com.oratakashi.viewbinding.core.binding.activity.viewBinding
 import com.oratakashi.viewbinding.core.binding.intent.intent
 import com.oratakashi.viewbinding.core.tools.onClick
 import com.oratakashi.viewbinding.core.tools.toast
-import kotlin.random.Random
+import com.google.android.gms.ads.MobileAds
 
 class SpinWheel : AppCompatActivity() {
 
@@ -29,7 +29,12 @@ class SpinWheel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spin_wheel)
 
+        MobileAds.initialize(this) {}
+
         with(binding) {
+
+            val adRequest = AdRequest.Builder().build()
+            adView.loadAd(adRequest)
             tvTitle.text = dataWheel.nama
 
             val Items = dbHelper.getWheelItems(dataWheel.id.toString())
